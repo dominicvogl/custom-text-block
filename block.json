@@ -14,8 +14,15 @@
   "style": "file:./build/style-index.css",
   "editorStyle": "file:./build/index.css",
   "attributes": {
-	"text": {
-	  "type": "string"
+	"title": {
+	  "type": "string",
+	  "source": "html",
+	  "selector": "h4"
+	},
+	"description": {
+	  "type": "string",
+	  "source": "html",
+	  "selector": "p"
 	}
   }
 }
