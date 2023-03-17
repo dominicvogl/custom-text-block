@@ -5,11 +5,16 @@ import {
 	RichText,
 	BlockControls,
 	AlignmentToolbar,
+	InspectorControls,
 } from "@wordpress/block-editor";
 import {
 	ToolbarGroup,
 	ToolbarButton,
 	ToolbarDropdownMenu,
+	PanelBody,
+	TextControl,
+	TextareaControl,
+	ToggleControl,
 } from "@wordpress/components";
 
 const Edit = ({ attributes, setAttributes }) => {
@@ -28,6 +33,32 @@ const Edit = ({ attributes, setAttributes }) => {
 
 	return (
 		<>
+			<InspectorControls>
+				<PanelBody
+					title={__("Custom Stuff", "textbox")}
+					icon={"smiley"}
+					initialOpen
+				>
+					<TextControl
+						label="input label"
+						value={title}
+						help="help text"
+						onChange={onChangeTitle}
+					/>
+					<TextareaControl
+						label="input label"
+						value={description}
+						help="help text"
+						onChange={onChangeDescription}
+					/>
+					<ToggleControl
+						label={"Start Fire squence"}
+						checked={false}
+						onChange={(v) => console.log(v)}
+					/>
+				</PanelBody>
+			</InspectorControls>
+
 			<section>
 				<BlockControls group="block">
 					<p>Block Controls</p>
