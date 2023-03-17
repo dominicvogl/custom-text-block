@@ -16,6 +16,7 @@
   },
   "dependencies": {
     "@wordpress/block-editor": "^11.6.0",
-    "@wordpress/blocks": "^12.6.0"
+    "@wordpress/blocks": "^12.6.0",
+    "@wordpress/i18n": "^4.29.0"
   }
 }
