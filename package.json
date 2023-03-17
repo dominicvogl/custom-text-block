@@ -1,0 +1,21 @@
+{
+  "name": "my-first-block",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "wp-scripts build",
+    "start": "wp-scripts start"
+  },
+  "keywords": [],
+  "author": "Dominic Vogl",
+  "license": "ISC",
+  "devDependencies": {
+    "@wordpress/scripts": "^26.0.0"
+  },
+  "dependencies": {
+    "@wordpress/block-editor": "^11.6.0",
+    "@wordpress/blocks": "^12.6.0"
+  }
+}
