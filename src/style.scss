@@ -1,5 +1,18 @@
-$red: #e17b7b;
+$red: rgba(163, 228, 246, 0.53);
 
-.wp-block-dominic-vogl-firstblock {
+.wp-block-dominic-vogl-text-box {
 	background: $red;
+	padding: 1rem;
+
+	&.text-box-align-right {
+		text-align: right;
+	}
+
+	&.text-box-align-center {
+		text-align: center;
+	}
+
+	&.text-box-align-left {
+		text-align: left;
+	}
 }

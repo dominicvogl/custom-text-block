@@ -2,14 +2,21 @@
 import { useBlockProps, RichText } from "@wordpress/block-editor";
 
 const Save = ({ attributes }) => {
-	const { title } = attributes;
-	const { description } = attributes;
+	const { title, description, alignment } = attributes;
 
 	return (
 		<>
-			<RichText.Content {...useBlockProps.save()} tagName="h4" value={title} />
 			<RichText.Content
-				{...useBlockProps.save()}
+				{...useBlockProps.save({
+					className: `text-box-align-${alignment}`,
+				})}
+				tagName="h4"
+				value={title}
+			/>
+			<RichText.Content
+				{...useBlockProps.save({
+					className: `text-box-align-${alignment}`,
+				})}
 				tagName="p"
 				value={description}
 			/>
