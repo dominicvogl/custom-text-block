@@ -8,7 +8,12 @@ import "./style.scss";
 import "./editor-style.scss";
 
 // register the block
-registerBlockType("dominic-vogl/firstblock", {
+registerBlockType("dominic-vogl/text-box", {
+	icon: {
+		src: "smiley",
+		foreground: "#fff",
+		background: "#f00",
+	},
 	edit: Edit,
 	save: Save,
 });

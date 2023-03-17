@@ -1,12 +1,16 @@
 {
-	"apiVersion": 2,
-	"name": "dominic-vogl/firstblock",
-	"title": "First Block",
-	"description": "My First Block, a simple block that displays a message.",
-	"category": "text",
-	"icon": "format-status",
-	"textdomain": "firstblock",
-	"editorScript": "file:./build/index.js",
-  	"style": "file:./build/style-index.css",
-  	"editorStyle": "file:./build/index.css"
+  "apiVersion": 2,
+  "name": "dominic-vogl/text-box",
+  "title": "Text Box",
+  "description": "My second Block, a simple block that displays Text.",
+  "category": "text",
+  "keywords": [
+	"text",
+	"paragraph",
+	"box"
+  ],
+  "textdomain": "textbox",
+  "editorScript": "file:./build/index.js",
+  "style": "file:./build/style-index.css",
+  "editorStyle": "file:./build/index.css"
 }
