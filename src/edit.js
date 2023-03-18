@@ -1,32 +1,47 @@
-// use the blockprops for the attributes on the html element for the editor and the frontend (classes, title, etc. Attributes)
 import { __ } from "@wordpress/i18n";
 import {
-	useBlockProps,
-	RichText,
-	BlockControls,
-	AlignmentToolbar,
-	InspectorControls,
+	useBlockProps, // use the blockprops for the attributes on the html element for the editor and the frontend (classes, title, etc. Attributes)
+	RichText, // use the rich text editor like in paragraph block
+	BlockControls, // use the block controls over the blocks for alignment, html tag, etc
+	AlignmentToolbar, // Toolbar component for alignment settings, ready to use
+	InspectorControls, // sidebare controls for settings shown in the sidebar
 } from "@wordpress/block-editor";
 import {
-	ToolbarGroup,
-	ToolbarButton,
-	ToolbarDropdownMenu,
-	PanelBody,
-	TextControl,
-	TextareaControl,
-	ToggleControl,
+	ToolbarGroup, // Group of one or multiple Toolbar settings
+	ToolbarButton, // single button
+	ToolbarDropdownMenu, // Drondown menu for more options
+	PanelBody, // Panel for sidebar controls, like an Tab to close and open
+	TextControl, // input field for sidebar controls
+	TextareaControl, // textarea field for sidebar controls
+	ToggleControl, // toggle field for sidebar controls
 } from "@wordpress/components";
 
 const Edit = ({ attributes, setAttributes }) => {
+	// get data from attributes (defined in block.json)
+	// needed for the editor to store and load the data
 	const { title, description, alignment } = attributes;
 
+	// CALLBACKS
+	/**
+	 * set the new title in the attributes
+	 * @param newText
+	 */
 	const onChangeTitle = (newText) => {
 		setAttributes({ title: newText });
 	};
+
+	/**
+	 * set the new description in the attributes
+	 * @param newText
+	 */
 	const onChangeDescription = (newText) => {
 		setAttributes({ description: newText });
 	};
 
+	/**
+	 * set the new alignment in the attributes
+	 * @param newAlignment
+	 */
 	const onChangeAlignment = (newAlignment) => {
 		setAttributes({ alignment: newAlignment });
 	};
