@@ -5,6 +5,8 @@ import {
 	BlockControls, // use the block controls over the blocks for alignment, html tag, etc
 	AlignmentToolbar, // Toolbar component for alignment settings, ready to use
 	InspectorControls, // sidebare controls for settings shown in the sidebar
+	PanelColorSettings, // color picker for sidebar controls (with colors from the theme)
+	ContrastChecker, // contrast checker for sidebar controls, warns the user if the contrast of the choosen colors is way to low
 } from "@wordpress/block-editor";
 import {
 	ToolbarGroup, // Group of one or multiple Toolbar settings
@@ -14,12 +16,14 @@ import {
 	TextControl, // input field for sidebar controls
 	TextareaControl, // textarea field for sidebar controls
 	ToggleControl, // toggle field for sidebar controls
+	ColorPalette, // color picker for sidebar controls
 } from "@wordpress/components";
 
 const Edit = ({ attributes, setAttributes }) => {
 	// get data from attributes (defined in block.json)
 	// needed for the editor to store and load the data
-	const { title, description, alignment } = attributes;
+	const { title, description, alignment, backgroundColor, textColor } =
+		attributes;
 
 	// CALLBACKS
 	/**
@@ -46,11 +50,27 @@ const Edit = ({ attributes, setAttributes }) => {
 		setAttributes({ alignment: newAlignment });
 	};
 
+	/**
+	 * set the new background color in the attributes
+	 * @param newBgColor
+	 */
+	const onBackgroundColorChange = (newBgColor) => {
+		setAttributes({ backgroundColor: newBgColor });
+	};
+
+	/**
+	 *
+	 * @param newTextColor
+	 */
+	const onTextColorChange = (newTextColor) => {
+		setAttributes({ textColor: newTextColor });
+	};
+
 	return (
 		<>
 			<InspectorControls>
 				<PanelBody
-					title={__("Custom Stuff", "textbox")}
+					title={__("Custom Stuff", "text-box")}
 					icon={"smiley"}
 					initialOpen
 				>
@@ -72,6 +92,29 @@ const Edit = ({ attributes, setAttributes }) => {
 						onChange={(v) => console.log(v)}
 					/>
 				</PanelBody>
+
+				<PanelColorSettings
+					title={__("Color Settings", "text-box")}
+					icon="admin-appereance"
+					colorSettings={[
+						{
+							value: textColor,
+							onChange: onTextColorChange,
+							label: __("Text Color", "text-box"),
+						},
+						{
+							value: backgroundColor,
+							onChange: onBackgroundColorChange,
+							label: __("Background Color", "text-box"),
+						},
+					]}
+				>
+					<ContrastChecker
+						// warns the user if the contrast of the choosen colors is way to low
+						textColor={textColor}
+						backgroundColor={backgroundColor}
+					/>
+				</PanelColorSettings>
 			</InspectorControls>
 
 			<section>
@@ -114,6 +157,7 @@ const Edit = ({ attributes, setAttributes }) => {
 				<RichText
 					{...useBlockProps({
 						className: `text-box-align-${alignment}`,
+						style: { backgroundColor, color: textColor },
 					})}
 					tagName="p"
 					onChange={onChangeDescription}
